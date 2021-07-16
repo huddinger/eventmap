@@ -9,6 +9,7 @@
  */
 
 
+
  function rest_endpoint( $data ) {
 
    return "Response from the REST yields";
@@ -35,8 +36,27 @@
    ) );
  }
 
- add_action( 'init', 'eventmap_shortcodes_init' );
- add_action( 'rest_api_init', 'eventmap_rest_init' );
+ function eventmap_options_page() {
+   ?>
+    <div class='wrapper'> </div>
+      <h1> Options Page </h1>
+    </div>
+   <?php
+ }
+
+ function eventmap_add_options_page() {
+   add_menu_page(
+       'EventMap',
+       'EventMap Data Tool',
+       'update_plugins',
+       'eventmap',
+       'eventmap_options_page',
+   );
+ }
+
+ add_action('init', 'eventmap_shortcodes_init');
+ add_action('rest_api_init', 'eventmap_rest_init');
+ add_action('admin_menu', 'eventmap_add_options_page');
 
 
 ?>
