@@ -45,11 +45,6 @@
    * REST API
    */
 
- function rest_endpoint( $data ) {
-
-   return "Response from the REST yields";
- }
-
 
 /*
  * SHORTCODE
@@ -57,21 +52,17 @@
 
  function eventmap_shortcode( $atts = [], $content = null, $tag = '' ) {
 
-     return "<div class='wp-eventmap'> <h1> Happy Helloween! </h1> </div>";
+     return "<div class='wrapper'>
+              <div id='eventmap' style='height:400px; width: max'>
+             </div>";
  }
 
  /**
   * Initializers
   */
- function eventmap_shortcodes_init() {
+ function eventmap_init() {
      add_shortcode( 'eventmap', 'eventmap_shortcode' );
- }
 
- function eventmap_rest_init() {
-   register_rest_route( 'eventmap/v1', '/events', array(
-     'methods' => 'GET',
-     'callback' => 'rest_endpoint',
-   ) );
  }
 
  function eventmap_options_page() {
@@ -112,8 +103,18 @@
  * ADD HOOKS
  */
 
- add_action('init', 'eventmap_shortcodes_init');
- add_action('rest_api_init', 'eventmap_rest_init');
+ include ("php/rest.php");
+
+ function eventmap_enqueue_scripts() {
+     wp_enqueue_style( 'leaflet-css', plugin_dir_url(__FILE__) . 'assets/leaflet/leaflet.css');
+     wp_enqueue_script( 'eventmap-js', plugin_dir_url(__FILE__) . 'assets/eventmap.js', array('jquery'));
+     wp_enqueue_script( 'leaflet-js', plugin_dir_url(__FILE__) . 'assets/leaflet/leaflet.js');
+ }
+
+
+ add_action( 'wp_enqueue_scripts', 'eventmap_enqueue_scripts' );
+
+ add_action('init', 'eventmap_init');
  add_action('admin_menu', 'eventmap_add_options_page');
 
  register_activation_hook(__FILE__, 'activate_eventmap');
