@@ -1,4 +1,3 @@
-
 var map = null
 
 function calculateMid(data) {

@@ -1,0 +1,8 @@
+[18-Jul-2021 14:41:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function encode_json() in /run/mount/Data/Jan/Code/github/eventmap/php/menu_pages.php:7
+Stack trace:
+#0 {main}
+  thrown in /run/mount/Data/Jan/Code/github/eventmap/php/menu_pages.php on line 7
+[18-Jul-2021 14:48:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function current_user_can() in /run/mount/Data/Jan/Code/github/eventmap/php/menu_pages.php:7
+Stack trace:
+#0 {main}
+  thrown in /run/mount/Data/Jan/Code/github/eventmap/php/menu_pages.php on line 7
