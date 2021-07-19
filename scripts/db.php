@@ -7,12 +7,12 @@ function db_create_tables() {
   $charset_collate = $wpdb->get_charset_collate();
 
   $sql = "CREATE TABLE $table_name (
-    id int NOT NULL AUTO_INCREMENT,
-    title varchar(50) not null,
-    lon float not null,
-    lat float not null,
-    PRIMARY KEY  (id)
-  ) $charset_collate;";
+            id int NOT NULL AUTO_INCREMENT,
+            title varchar(50) not null,
+            lon float not null,
+            lat float not null,
+            PRIMARY KEY  (id)
+          ) $charset_collate;";
 
   require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
   dbDelta( $sql );
@@ -27,19 +27,34 @@ function db_delete_tables() {
 
 function db_get_events() {
   global $wpdb;
-  return $wpdb->get_results("SELECT id, title, lon, lat FROM `{$wpdb->prefix}eventmap_data`;");
+  return $wpdb->get_results( "SELECT id, title, lon, lat
+                              FROM `{$wpdb->prefix}eventmap_data`;");
 }
 
 function db_insert_event(  $title, $lat, $lon  ) {
   global $wpdb;
-  $sql = "INSERT INTO `{$wpdb->prefix}eventmap_data`(title, lon, lat) VALUES ('{$title}', {$lat}, {$lon});";
+  $sql = "INSERT INTO `{$wpdb->prefix}eventmap_data`(title, lon, lat)
+          VALUES ('{$title}', {$lat}, {$lon});";
   return $wpdb->query( $sql );
 
 }
 
-function db_put_event() {
-  global $wpdb;
+class DB {
+  static public function get_event_by_id( $id ) {
+    global $wpdb;
+    return $wpdb->get_row( "SELECT id, title, lon, lat
+                            FROM {$wpdb->prefix}eventmap_data
+                            WHERE id = {$id};");
+  }
 
+  static public function update_event( $id, $title, $lat, $lon ) {
+    global $wpdb;
+    $wpdb->query("UPDATE {$wpdb->prefix}eventmap_data
+                  SET   title = '{$title}',
+                        lon   = {$lon},
+                        lat   = {$lat}
+                  WHERE id    = {$id};");
+  }
 }
 
 ?>

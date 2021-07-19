@@ -44,22 +44,34 @@ class API {
   }
 
   public function process_request() {
-
-
     if ( ! $this->verify() ) {
       echo 'Invalid Nonce';
       return;
     }
 
-        echo ('my ass');
-    $title = sanitize_text_field(  wp_unslash( $_POST['title']  ) );
-    $lat   = sanitize_text_field(  wp_unslash( $_POST['lat']  ) );
-    $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
-
-    db_insert_event( $title, $lat, $lon );
+    // $action = isset($_POST['eventmap-action']) ? $_POST['eventmap_action'] : "";
+    $action = $_POST['eventmap-action'] ?? null;
 
 
-    $this->redirect();
+    if ( $action == "add" ) {
+      $title = sanitize_text_field(  wp_unslash( $_POST['title']  ) );
+      $lat   = sanitize_text_field(  wp_unslash( $_POST['lat']  ) );
+      $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
+
+      db_insert_event( $title, $lat, $lon );
+    }
+
+    if ( $action == "edit" ) {
+      $id    = sanitize_text_field(  wp_unslash( $_POST['id']  ) );
+      $title = sanitize_text_field(  wp_unslash( $_POST['title']  ) );
+      $lat   = sanitize_text_field(  wp_unslash( $_POST['lat']  ) );
+      $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
+
+      DB::update_event ( $id, $title, $lat, $lon );
+    }
+
+    echo $action ;
+    //$this->redirect();
   }
 
   private function redirect() {

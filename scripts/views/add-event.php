@@ -4,6 +4,8 @@
 
 
     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+      <input type="text" name="eventmap-action" value="add" style="display:none" />  
+
       <table>
         <tr><td> Titel:     </td><td> <input type="text" name="title" />  <br /> </td></tr>
         <tr><td> Latitude:  </td><td> <input type="text" name="lat" />    <br /> </td></tr>

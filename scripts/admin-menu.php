@@ -6,13 +6,14 @@ class AdminMenu {
     $menu = array();
     $menu[] = new AdminMenuPage();
     $menu[] = new AdminAddEventPage();
+    $menu[] = new AdminEditEventPage();
 
     foreach (  $menu as $e  ) {
       $e->init();
     }
   }
 
-  function __constructor() {
+  public function __constructor() {
     add_action(  'admin_menu', array (  $this, 'init')  );
   }
 
