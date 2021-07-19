@@ -10,7 +10,6 @@
       <th> Latitude </th>
       <th> Longitude </th>
       <th> Edit </th>
-      <th> Delete </th>
     </tr>
 
     <?php
@@ -21,8 +20,7 @@
      echo "<td> $row->title </td>";
      echo "<td> $row->lat </td>";
      echo "<td> $row->lon </td>";
-     echo "<td> </td>";
-     echo "<td>";
+     echo "<td> <a href='" . menu_page_url( 'eventmap-edit-event', false ) . '&id=' . $row->id . "' > Edit </a> </td>";
      echo "</tr>";
     };
     ?>

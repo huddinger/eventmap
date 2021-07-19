@@ -29,4 +29,16 @@
       }
       ?>
     </form>
+    <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
+      <input type="text" name="eventmap-action" value="delete" style="display:none" />
+      <?php
+      if ( $id != -1 ) {
+        echo '<input type="text" name="id" value="' . $id . '" style="display:none" />';
+
+        wp_nonce_field( );
+        submit_button("Delete Event");
+      }
+      ?>
+    </form>
+
 </div><!-- .wrap -->

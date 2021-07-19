@@ -68,9 +68,19 @@ class API {
       $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
 
       DB::update_event ( $id, $title, $lat, $lon );
+
+      wp_redirect( admin_url( 'admin.php?page=eventmap-overview' ) );
+      exit;
     }
 
-    $this->redirect();
+    if ( $action == "delete" ) {
+      $id = sanitize_text_field(  wp_unslash( $_POST['id']  ) );
+      DB::delete_event ( $id );
+
+      wp_redirect( admin_url( 'admin.php?page=eventmap-overview' ) );
+      exit;
+    }
+    //$this->redirect();
   }
 
   private function redirect() {

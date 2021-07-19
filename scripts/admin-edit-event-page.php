@@ -5,7 +5,7 @@ class AdminEditEventPage {
 
   public function init() {
     add_submenu_page(
-      'eventmap-overview',//parent_slug
+      null,//parent_slug -> will not be shown in menu
       'Edit Event', //page_title,
       'Edit Event', //menu_title,
       'manage_options', //capability,

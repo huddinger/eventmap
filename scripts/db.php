@@ -56,6 +56,12 @@ class DB {
                         lat   = {$lat}
                   WHERE id    = {$id};");
   }
+
+  static public function delete_event( $id ) {
+    global $wpdb;
+    $wpdb->query("DELETE FROM {$wpdb->prefix}eventmap_data
+                        WHERE id = {$id};");
+  }
 }
 
 ?>
