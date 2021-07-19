@@ -58,7 +58,7 @@ class API {
       $lat   = sanitize_text_field(  wp_unslash( $_POST['lat']  ) );
       $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
 
-      db_insert_event( $title, $lat, $lon );
+      DB::insert_event( $title, $lat, $lon );
     }
 
     if ( $action == "edit" ) {
@@ -70,8 +70,7 @@ class API {
       DB::update_event ( $id, $title, $lat, $lon );
     }
 
-    echo $action ;
-    //$this->redirect();
+    $this->redirect();
   }
 
   private function redirect() {

@@ -24,25 +24,7 @@ class AdminMenuPage {
   }
 
   function render() {
-    $data = db_get_events();
-
-     echo "<div class='wrapper'> </div>";
-     echo "<table><tr>";
-     echo "<th style='display:none'> id </th>";
-     echo "<th> Title </th>";
-     echo "<th> Latitude </th>";
-     echo "<th> Longitude </th>";
-     echo "</tr>";
-
-     foreach ($data as $row) {
-       echo "<tr>";
-       echo "<td style='display:none'> $row->id </td>";
-       echo "<td> $row->title </td>";
-       echo "<td> $row->lat </td>";
-       echo "<td> $row->lon </td>";
-       echo "</tr>";
-     };
-     echo "</div>";
+    require_once('views/menu.php');
    }
 
   }

@@ -1,11 +1,6 @@
 <div class='wrapper'>
     <h1>
-      <?php
-
-      echo esc_html( get_admin_page_title() ); echo json_encode($_REQUEST);
-
-
-      ?>
+      <?php echo esc_html( get_admin_page_title() ); ?>
     </h1>
 
   <table>
@@ -19,7 +14,7 @@
     </tr>
 
     <?php
-    $data = db_get_events();
+    $data = DB::get_events();
     foreach ($data as $row) {
      echo "<tr>";
      echo "<td> $row->id </td>";

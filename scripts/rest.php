@@ -3,7 +3,7 @@
 require_once('db.php');
 
  function get_events( $data ) {
-   return db_get_events();
+   return DB::get_events();
  }
 
 

@@ -25,11 +25,11 @@ class EventMap {
 
 
  function activate_eventmap() {
-   db_create_tables();
+   DB::create_tables();
  }
 
  function deactivate_eventmap() {
-   db_delete_tables();
+   DB::delete_tables();
 
  }
 
