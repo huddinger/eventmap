@@ -110,7 +110,7 @@ function init() {
   }
 
   if ( context == 'map' ) {
-    jQuery.ajax("?rest_route=/eventmap/v1/events")
+    jQuery.ajax("/?rest_route=/eventmap/v1/events")
       .done( processEvents )
       .error(function(){console.log('eventmap: error loading data')})
   }

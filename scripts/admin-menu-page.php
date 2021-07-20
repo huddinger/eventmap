@@ -25,6 +25,7 @@ class AdminMenuPage {
 
   function render() {
     require_once('views/menu.php');
+    require_once('views/map.php');
    }
 
   }

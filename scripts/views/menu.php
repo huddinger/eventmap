@@ -26,4 +26,6 @@
     ?>
 
   </table>
+
+  <input id='eventmap-type' value='map' style='display:none;' />
 </div>

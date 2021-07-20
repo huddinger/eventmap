@@ -15,7 +15,7 @@ class AdminOptionsPage {
 
   function render() {
     include_once( 'views/options.php' );
-    include_once( 'views/location-selector.php' );
+    include_once( 'views/map.php' );
   }
 
 }
