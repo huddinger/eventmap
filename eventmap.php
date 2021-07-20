@@ -45,12 +45,6 @@ class EventMap {
      wp_enqueue_script( 'leaflet-js', plugin_dir_url(__FILE__) . 'assets/leaflet/leaflet.js');
  }
 
- function enqueue_admin_scripts() {
-     wp_enqueue_style( 'leaflet-css', plugin_dir_url(__FILE__) . 'assets/leaflet/leaflet.css');
-     wp_enqueue_script( 'eventmap-js', plugin_dir_url(__FILE__) . 'assets/location-selector.js', array('jquery'));
-     wp_enqueue_script( 'leaflet-js', plugin_dir_url(__FILE__) . 'assets/leaflet/leaflet.js');
- }
-
 
  function init() {
   $api = new API();
@@ -64,7 +58,7 @@ class EventMap {
   add_action( 'admin_post', array( $api, 'process_request' ) );
 
   add_action(  'wp_enqueue_scripts', array(  $this, 'enqueue_scripts')  );
-  add_action( 'admin_enqueue_scripts', array ($this, 'enqueue_admin_scripts') );
+  add_action( 'admin_enqueue_scripts', array ($this, 'enqueue_scripts') );
     add_action(  'admin_menu', array (  $menu, 'init')  );
   add_action(  'init', array(  $sc, 'init'  )  );
 
