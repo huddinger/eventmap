@@ -7,6 +7,7 @@ class AdminMenu {
     $menu[] = new AdminMenuPage();
     $menu[] = new AdminAddEventPage();
     $menu[] = new AdminEditEventPage();
+    $menu[] = new AdminOptionsPage();
 
     foreach (  $menu as $e  ) {
       $e->init();

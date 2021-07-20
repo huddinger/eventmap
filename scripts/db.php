@@ -35,7 +35,7 @@ class DB {
 
   static public function insert_event( $title, $lat, $lon ) {
     global $wpdb;
-    $sql = "INSERT INTO `{$wpdb->prefix}eventmap_data`(title, lon, lat)
+    $sql = "INSERT INTO `{$wpdb->prefix}eventmap_data`(title, lat, lon)
             VALUES ('{$title}', {$lat}, {$lon});";
     return $wpdb->query( $sql );
 

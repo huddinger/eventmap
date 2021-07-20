@@ -16,6 +16,7 @@ class AdminAddEventPage {
 
   function render() {
     include_once( 'views/add-event.php' );
+    include_once( 'views/location-selector.php' );
   }
 
 }

@@ -1,45 +1,35 @@
 var map = null
 
-function calculateMid(data) {
-  lat = 0
-  lon = 0;
-
-  data.forEach((item, i) => {
-    lat += parseFloat(item['lat'])
-    lon += parseFloat(item['lon'])
-  });
-
-  i = data.length
-  return [lat/i, lon/i]
-}
-
-function setMarkers(data) {
+function processData(data) {
   data.forEach((item, i) => {
       latlon = [parseFloat(item['lat']), parseFloat(item['lon'])]
 
       marker = L.marker(latlon)
-                .addTo(map)
-                .bindPopup(item['title']);
+                .addTo(map);
+
+      marker.bindPopup(item['title']);
+
   })
 }
 
-function processData(data) {
-  // calculate center
-  console.log(data)
 
-  mid = calculateMid(data)
-  map.setView(mid, 10)
+function processOptions(data) {
+  lat  = parseFloat( data['lat']  )
+  lon  = parseFloat( data['lon']  )
+  zoom = parseInt  ( data['zoom'] )
 
-  setMarkers(data)
-}
+  if ( isNaN(lat + lon) )
+    latlng = [0, 0]
 
-function requestData() {
-  jQuery.ajax("?rest_route=/eventmap/v1/events")
-    .done(function(data){processData(data)})
-    .error(function(){console.log('eventmap: error loading data')})
+  if ( isNaN(zoom) )
+    zoom = 10
+
+  map.setView([lat, lon], zoom)
 }
 
 function init() {
+  if ( jQuery( '#eventmap' ).length == 0)
+    return;
 
   //initialize map
   map = L.map('eventmap');
@@ -48,10 +38,17 @@ function init() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  map.setView([51.505, -0.09], 13)
+
+  // Get view Options
+  jQuery.ajax("/?rest_route=/eventmap/v1/options")
+    .done( processOptions )
+    .error(function(){console.log('eventmap: error loading data')})
 
 
-  requestData();
+  // Get event data
+  jQuery.ajax("?rest_route=/eventmap/v1/events")
+    .done( processData )
+    .error(function(){console.log('eventmap: error loading data')})
 }
 
 

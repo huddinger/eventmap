@@ -68,19 +68,28 @@ class API {
       $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
 
       DB::update_event ( $id, $title, $lat, $lon );
-
-      wp_redirect( admin_url( 'admin.php?page=eventmap-overview' ) );
-      exit;
     }
 
     if ( $action == "delete" ) {
       $id = sanitize_text_field(  wp_unslash( $_POST['id']  ) );
       DB::delete_event ( $id );
+    }
 
-      wp_redirect( admin_url( 'admin.php?page=eventmap-overview' ) );
+    if ( $action == "edit-options" ) {
+      $lat = sanitize_text_field(  wp_unslash( $_POST['lat']  ) );
+      $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
+      $zoom   = sanitize_text_field(  wp_unslash( $_POST['zoom']  ) );
+
+      $options = array( 'lat' => $lat, 'lon' => $lon, 'zoom' => $zoom );
+      update_option('eventmap-options', $options);
+
+      $this->redirect();
       exit;
     }
-    //$this->redirect();
+
+
+    wp_redirect( admin_url( 'admin.php?page=eventmap-overview' ) );
+    exit;
   }
 
   private function redirect() {

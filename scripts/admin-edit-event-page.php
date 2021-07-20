@@ -16,6 +16,7 @@ class AdminEditEventPage {
 
   function render() {
     include_once( 'views/edit-event.php' );
+    include_once( 'views/location-selector.php' );
   }
 
 }
