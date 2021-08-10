@@ -72,8 +72,9 @@ function processOptions(data) {
   if ( isNaN(defaultZoom) )
     defaultZoom = 10
 
-  if ( ['options', 'map'].includes(context) )
-    map.setView(defaultLatLng, defaultZoom)
+  map.setZoom(defaultZoom);
+
+  map.setView(defaultLatLng, defaultZoom)
 }
 
 
@@ -109,12 +110,14 @@ function init() {
     map.addEventListener('click', clickEventHandler)
   }
 
+  // if we're on the map, we want to show all events
   if ( context == 'map' ) {
     jQuery.ajax("/?rest_route=/eventmap/v1/events")
       .done( processEvents )
       .error(function(){console.log('eventmap: error loading data')})
   }
 
+  // on the options page, we want to set the default view
   if ( context == 'options' ) {
     map.addEventListener( 'moveend', moveEventHandler )
     map.addEventListener( 'zoomend', zoomEventHandler )

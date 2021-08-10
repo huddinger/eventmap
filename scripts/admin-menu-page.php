@@ -17,7 +17,7 @@ class AdminMenuPage {
     add_menu_page(
       'EventMap', //page title
       'EventMap Data Tool', //menu title
-      'manage_options', //capability
+      WP_PERMISSION, //capability
       'eventmap-overview', //slug
       array(  $this, 'render'  ) //callable function
     );

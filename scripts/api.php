@@ -28,7 +28,7 @@ class API {
         return false;
     }
 
-    if ( ! current_user_can (  'manage_options'  ) ) {
+    if ( ! current_user_can (  WP_PERMISSION  ) ) {
       return false;
     }
 

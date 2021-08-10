@@ -1,3 +1,3 @@
 <div class='wrap'>
-  <div id='eventmap' style='width:max; height:400px'/>
+  <div id='eventmap' style='max-width:100%; height:auto'/>
 </div> <!-- wrapper -->

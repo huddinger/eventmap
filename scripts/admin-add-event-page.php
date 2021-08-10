@@ -8,7 +8,7 @@ class AdminAddEventPage {
       'eventmap-overview',//parent_slug
       'Add Event', //page_title,
       'Add Event', //menu_title,
-      'manage_options', //capability,
+      WP_PERMISSION, //capability,
       'eventmap-add-event', //menu_slug
       array( $this, 'render' ) // callable function
     );

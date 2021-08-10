@@ -7,7 +7,7 @@ class AdminOptionsPage {
       'eventmap-overview',//parent_slug -> will not be shown in menu
       'Eventmap Options', //page_title,
       'Options', //menu_title,
-      'manage_options', //capability,
+      WP_PERMISSION, //capability,
       'eventmap-options', //menu_slug
       array( $this, 'render' ) // callable function
     );

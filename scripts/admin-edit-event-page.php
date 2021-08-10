@@ -8,7 +8,7 @@ class AdminEditEventPage {
       null,//parent_slug -> will not be shown in menu
       'Edit Event', //page_title,
       'Edit Event', //menu_title,
-      'manage_options', //capability,
+      WP_PERMISSION, //capability,
       'eventmap-edit-event', //menu_slug
       array( $this, 'render' ) // callable function
     );

@@ -13,7 +13,6 @@
       if ( $id != -1 ) {
         $data = DB::get_event_by_id( $id );
 
-        echo '';
         echo '<table>';
 
         echo '<tr><td> ID:        </td><td> <input type="text" name="id"    value="' . $data->id    . '" readonly/> <br /> </td></tr>
