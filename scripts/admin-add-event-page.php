@@ -5,7 +5,7 @@ class AdminAddEventPage {
 
   public function init() {
     add_submenu_page(
-      'eventmap-overview',//parent_slug
+      null, //parent_slug -> not shown in menu, but accessable via overview
       'Add Event', //page_title,
       'Add Event', //menu_title,
       WP_PERMISSION, //capability,

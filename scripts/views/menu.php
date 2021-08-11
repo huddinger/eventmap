@@ -28,6 +28,9 @@
     ?>
 
   </table>
+  <br>
+
+  <a href='admin.php?page=eventmap-add-event' class='button'> Add Event </a>
 
   <input id='eventmap-type' value='map' style='display:none;' />
 </div>
