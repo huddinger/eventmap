@@ -45,7 +45,8 @@ function processEvent(item) {
   marker = L.marker(latlon)
             .addTo(map);
 
-  marker.bindPopup(item['title']);
+  popup = '<b>' + item['title'] + '</b> <br>' + item['info']
+  marker.bindPopup(popup);
 
   if ( context == 'event' )
     map.setView( latlon , defaultZoom )

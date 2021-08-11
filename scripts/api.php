@@ -57,8 +57,9 @@ class API {
       $title = sanitize_text_field(  wp_unslash( $_POST['title']  ) );
       $lat   = sanitize_text_field(  wp_unslash( $_POST['lat']  ) );
       $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
+      $info  = sanitize_text_field(  wp_unslash( $_POST['info'] ) );
 
-      DB::insert_event( $title, $lat, $lon );
+      DB::insert_event( $title, $lat, $lon, $info );
     }
 
     if ( $action == "edit" ) {
@@ -66,8 +67,11 @@ class API {
       $title = sanitize_text_field(  wp_unslash( $_POST['title']  ) );
       $lat   = sanitize_text_field(  wp_unslash( $_POST['lat']  ) );
       $lon   = sanitize_text_field(  wp_unslash( $_POST['lon']  ) );
+      $info  = sanitize_text_field(  wp_unslash( $_POST['info'] ) );
 
-      DB::update_event ( $id, $title, $lat, $lon );
+
+      DB::update_event ( $id, $title, $lat, $lon, $info );
+
     }
 
     if ( $action == "delete" ) {

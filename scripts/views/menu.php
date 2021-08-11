@@ -9,6 +9,7 @@
       <th> Title doo </th>
       <th> Latitude </th>
       <th> Longitude </th>
+      <th> Info </th>
       <th> Edit </th>
     </tr>
 
@@ -16,10 +17,11 @@
     $data = DB::get_events();
     foreach ($data as $row) {
      echo "<tr>";
-     echo "<td> $row->id </td>";
+     echo "<td> $row->id    </td>";
      echo "<td> $row->title </td>";
-     echo "<td> $row->lat </td>";
-     echo "<td> $row->lon </td>";
+     echo "<td> $row->lat   </td>";
+     echo "<td> $row->lon   </td>";
+     echo "<td> $row->info  </td>";
      echo "<td> <a href='" . menu_page_url( 'eventmap-edit-event', false ) . '&id=' . $row->id . "' > Edit </a> </td>";
      echo "</tr>";
     };

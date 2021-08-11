@@ -16,9 +16,10 @@
         echo '<table>';
 
         echo '<tr><td> ID:        </td><td> <input type="text" name="id"    value="' . $data->id    . '" readonly/> <br /> </td></tr>
-              <tr><td> Titel:     </td><td> <input type="text" name="title" id="eventmap-title" value="' . $data->title . '" />         <br /> </td></tr>
-              <tr><td> Latitude:  </td><td> <input type="text" name="lat"  id="eventmap-lat" value="' . $data->lat   . '" />         <br /> </td></tr>
-              <tr><td> Longitude: </td><td> <input type="text" name="lon"  id="eventmap-lon" value="' . $data->lon   . '" />         <br /> </td></tr>';
+              <tr><td> Titel:     </td><td> <input type="text" name="title" id="eventmap-title" value="' . $data->title . '" />       <br /> </td></tr>
+              <tr><td> Latitude:  </td><td> <input type="text" name="lat"   id="eventmap-lat" value="' . $data->lat   . '" />         <br /> </td></tr>
+              <tr><td> Longitude: </td><td> <input type="text" name="lon"   id="eventmap-lon" value="' . $data->lon   . '" />         <br /> </td></tr>
+              <tr><td> Info:      </td><td> <input type="text" name="info"  id="eventmap-info" value="' . $data->info   . '" />       <br /> </td></tr>';
 
         echo '</table>';
 

@@ -12,6 +12,7 @@
         <tr><td> Titel:     </td><td> <input type="text" name="title" />  <br /> </td></tr>
         <tr><td> Latitude:  </td><td> <input type="text" name="lat"  id="eventmap-lat" />    <br /> </td></tr>
         <tr><td> Longitude: </td><td> <input type="text" name="lon"  id="eventmap-lon" />    <br /> </td></tr>
+        <tr><td> Info:      </td><td> <input type="text" name="info" id="eventmap-info" />   <br /> </td></tr>
       </table>
 
       <?php
